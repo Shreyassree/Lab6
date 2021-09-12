@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+class ICA;
+
+class TEE
+{
+    int math;
+    int oops;
+    int SE;
+    int DS;
+    public:
+            TEE()
+            {
+                cout<<"Enter your TEE marks: "<<endl;
+                cout<<"\nEnter marks of Math: ";
+                cin>>math;
+                cout<<"Enter marks of OOP: ";
+                cin>>oops;
+                cout<<"Enter marks of SE: ";
+                cin>>SE;
+                cout<<"Enter marks of DS: ";
+                cin>>DS;
+            }
+            friend int sum(TEE,ICA);
+
+};
+
+class ICA
+{
+    int math;
+    int oops;
+    int SE;
+    int DS;
+    public:
+            ICA()
+            {   cout<<"\nEnter your ICA marks"<<endl;
+                cout<<"\nEnter marks of Math: ";
+                cin>>math;
+                cout<<"Enter marks of OOP: ";
+                cin>>oops;
+                cout<<"Enter marks of SE: ";
+                cin>>SE;
+                cout<<"Enter marks of DS: ";
+                cin>>DS;
+            }
+             friend int sum(TEE v1,ICA v2);
+};
+
+int sum(TEE v1, ICA v2)
+{
+    cout<<"\nTotal in Math: "<<v1.math+v2.math;
+    cout<<"\nTotal in OOP: "<<v1.oops+v2.oops;
+    cout<<"\nTotal in SE: "<<v1.SE+v2.SE;
+    cout<<"\nTotal in DS: "<<v1.DS+v2.DS;
+}
+
+int main()
+{
+    TEE  a;
+    ICA  b;
+    int result;
+
+    
+    cout<<"\nResult: ";
+    result = sum(a,b);
+    
+    return 0;
+}
