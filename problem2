@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+    private:
+        char name[40];
+        float id;
+        char dept[40];
+        float mont_sal;
+        
+    
+    public:
+        void readData()
+        {
+                cout<<"\n Enter Name          :  ";
+                cin>>name;
+                cout<<"\n Enter ID            :  ";
+                cin>>id;
+                cout<<"\n Enter Department    :  ";
+                cin>>dept;
+                cout<<"\n Enter Monthly Salary:  ";
+                cin>>mont_sal;
+            
+        }
+        void display()
+        {
+            cout<<"\nName          : "<<name<<endl;
+            cout<<"ID            : "<<id<<endl;
+            cout<<"Department    : "<<dept<<endl;
+            cout<<"Monthly Salary: "<<mont_sal<<endl;
+        }
+        friend class Sales;
+};        
+
+class Sales
+{
+    private:    
+        int s_month;
+        float incent;
+        string perform;
+    public:
+        void readSales()
+        {
+                cout<<"\nEnter Sales  : ";
+                cin>>s_month;
+        }
+        
+        void incentives(Employee E)
+        {
+                if(s_month>50 && s_month<=100)
+                {
+                incent = 0.1*E.mont_sal;
+                perform = "10%";
+                }
+                else if(100<s_month && s_month<=150)
+                {
+                incent = 0.2*E.mont_sal;
+                perform = "20%";
+                }
+                else if(s_month > 150)
+                {
+                incent = 0.3*E.mont_sal;
+                perform = "30%";
+                }
+                else
+                {
+                    cout<<"\n Not enough";
+                }
+                cout<<"\n"<<perform<<" Incentive Acquired: "<<incent<<endl;
+        }
+        void performa()
+        {
+            if(s_month>150)
+            cout<<"Performance: Excellent";
+            else if(100<s_month<=150)
+            cout<<"Performance: Good";
+            else if(50<s_month<=100)
+            cout<<"Performance: Satisfactory";
+            else if(s_month<=50)
+            cout<<"Performance: Poor";
+        }
+};
+
+int main()
+{
+    Employee E;
+    Sales S;
+    E.readData();
+    E.display();
+    S.readSales();
+    S.incentives(E);
+    S.performa();
+    
+}
